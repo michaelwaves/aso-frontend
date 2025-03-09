@@ -72,17 +72,32 @@ function GeneForm() {
         }
     }
     return (
-        <div>
-            <form onSubmit={form.handleSubmit(onSubmit)} >
-                <label htmlFor="sequence">Input Gene Sequence (min 20 bp)</label>
-                <p className="font-sm text-gray-700">e.g. AGCTCAGCTAGCATCGATGCA...</p>
-                <Input id="sequence"
+        <div className="w-full bg-white dark:bg-gray-800  dark:border-gray-700">
+            {/* Form */}
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+                <label htmlFor="sequence" className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    Input Gene Sequence <span className="text-sm text-gray-500">(min 20 bp)</span>
+                </label>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                    e.g. <code className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-gray-100">AGCTCAGCTAGCATCGATGCA...</code>
+                </p>
+                <Input
+                    id="sequence"
                     {...form.register("sequence")}
-                    placeholder="Input gene sequence" />
-                <Button type="submit">Submit</Button>
+                    placeholder="Input gene sequence"
+                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-500"
+                />
+                <Button
+                    type="submit"
+                    className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black py-3 px-6 rounded-full font-medium shadow-md transition-all hover:bg-gray-700 dark:hover:bg-gray-300"
+                >
+                    Submit
+                </Button>
             </form>
-            <div>
-                <DataTable columns={columns} data={data} />
+
+            {/* Table Section */}
+            <div className="mt-8">
+                <DataTable columns={columns} data={[]} />
             </div>
         </div>
     );
