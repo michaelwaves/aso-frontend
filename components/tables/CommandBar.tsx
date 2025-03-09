@@ -2,7 +2,6 @@ import { Table } from "@tanstack/react-table";
 import GlobalSearch from "./GlobalSearch"
 import CSVDownloadButton from "./CSVDownloadButton"
 import { DataTableViewOptions } from "./DatatableViewOptions";
-//import { DataTableFilter } from "./DatatableFilter";
 
 
 function CommandBar({ table, data }: { table: Table<any>, data: any[] }) {
@@ -16,7 +15,6 @@ function CommandBar({ table, data }: { table: Table<any>, data: any[] }) {
                 {/* CSV Download Button */}
                 <CSVDownloadButton data={downloadData.length === 0 ? data : downloadData} filename="Transactions" />
                 {/* Filter Section */}
-                {/* <DataTableFilter table={table} /> */}
                 {/* View Options */}
                 <DataTableViewOptions table={table} />
             </div>
