@@ -97,7 +97,7 @@ function GeneForm() {
 
             {/* Table Section */}
             <div className="mt-8">
-                <DataTable columns={columns} data={[]} />
+                <DataTable columns={columns} data={data} />
             </div>
         </div>
     );
