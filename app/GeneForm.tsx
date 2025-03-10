@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useForm } from 'react-hook-form'
 import { toast } from "sonner";
 import { columns } from "./columns";
+import { Loader } from "lucide-react";
 
 export const getSfold = async (sequence: string) => {
     const url = process.env.NEXT_PUBLIC_SFOLD_LINK;
@@ -98,7 +99,7 @@ function GeneForm() {
                     type="submit"
                     className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black py-3 px-6 rounded-full font-medium shadow-md transition-all hover:bg-gray-700 dark:hover:bg-gray-300"
                 >
-                    Submit
+                    {loading ? <Loader className="animate-spin" /> : "Submit"}
                 </Button>
             </form>
 
