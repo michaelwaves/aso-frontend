@@ -76,15 +76,17 @@ function GeneForm() {
             {/* Form */}
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
                 <label htmlFor="sequence" className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                    Input Gene Sequence <span className="text-sm text-gray-500">(min 20 bp)</span>
+                    Input Gene Sequence <span className="text-sm text-gray-500">(min 20 bp max 250 bp)</span>
                 </label>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                     e.g. <code className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded text-gray-900 dark:text-gray-100">AGCTCAGCTAGCATCGATGCA...</code>
+                    Don't put anything too long or it will take hours
                 </p>
                 <Input
                     id="sequence"
                     {...form.register("sequence")}
                     placeholder="Input gene sequence"
+                    maxLength={250}
                     className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-500"
                 />
                 <Button
