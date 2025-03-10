@@ -52,6 +52,7 @@ export const getSfold = async (sequence: string) => {
 
 function GeneForm() {
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
     const form = useForm({
         defaultValues: {
             sequence: ""
@@ -60,16 +61,19 @@ function GeneForm() {
 
     const onSubmit = async (formdata: any) => {
         const sequence = formdata.sequence
+        setLoading(true)
         try {
             const res = await getSfold(sequence)
             const d = await getOligo()
             console.log(d)
             setData(d)
             toast("got res")
+            setLoading(false)
         } catch (e) {
             toast("Error fetching sfold")
             console.error(e)
         }
+        setLoading(false)
     }
     return (
         <div className="w-full bg-white dark:bg-gray-800  dark:border-gray-700">
@@ -90,6 +94,7 @@ function GeneForm() {
                     className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-500"
                 />
                 <Button
+                    disabled={loading}
                     type="submit"
                     className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black py-3 px-6 rounded-full font-medium shadow-md transition-all hover:bg-gray-700 dark:hover:bg-gray-300"
                 >
